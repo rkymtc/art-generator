@@ -1,14 +1,10 @@
 # Art Generator
 
-Bu proje, yapay zeka teknolojisini kullanarak sanat eserleri oluşturmak için geliştirilmiştir.
-
 ## Demo Video
 
 Aşağıdaki videoyu izleyerek uygulamanın nasıl çalıştığını görebilirsiniz:
 
-https://github.com/rkymtc/art-generator/raw/main/app/src/assets/videos/app.mp4
-
-[Demo Videosu](app/src/assets/videos/app.mp4)
+[![Video Önizleme](https://img.shields.io/badge/Video-İzle-red?style=for-the-badge&logo=youtube)](https://github.com/rkymtc/art-generator/raw/main/app/src/assets/videos/app.mp4 "Art Generator Demo")
 
 ## Özellikler
 
