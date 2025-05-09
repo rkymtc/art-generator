@@ -1,6 +1,6 @@
-# AI Logo Generator Demo
+# Generator Demo
 
-Bu React Native Expo uygulaması, Hexa - AI Logo & Art Generator arayüzünü taklit eden bir demo uygulamasıdır.
+Bu React Native Expo uygulaması.
 
 ## Özellikler
 

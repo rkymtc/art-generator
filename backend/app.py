@@ -141,7 +141,6 @@ def logo_generation_task(task_id, prompt, style, host_url):
         
         image_path = generate_logo_image(prompt, style)
         
-        # Use the host URL passed from the request context
         image_url = f"{host_url}/{image_path}"
         
         completion_data = {
@@ -192,10 +191,8 @@ def generate_logo():
         
         add_logo_to_firestore(task_id, task_data)
         
-        # Get the host URL from the current request context
         host_url = request.host_url.rstrip('/')
         
-        # Pass the host URL to the background task
         thread = threading.Thread(target=logo_generation_task, args=(task_id, prompt, style, host_url))
         thread.daemon = True
         thread.start()
