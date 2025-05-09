@@ -1,30 +1,28 @@
+import axios, { AxiosInstance } from 'axios';
 import { Logo, LogoGenerationResponse, LogoStatusResponse, LogosResponse } from '../types/api';
-const API_BASE_URL = 'http://localhost:5001/api';
+
+const apiClient: AxiosInstance = axios.create({
+  baseURL: 'http://localhost:5001/api',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  timeout: 10000,
+});
 
 export const logoService = {
   generateLogo: async (prompt: string, style: string): Promise<LogoGenerationResponse> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/logo/generate`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ prompt, style }),
-      });
-      console.log('Logo generation response:', response);
-      const data = await response.json();
+      const { data } = await apiClient.post('/logo/generate', { prompt, style });
       return data;
     } catch (error) {
       console.error('Logo generation error:', error);
-      console.log('Logooooooooooo:');
       throw new Error('Failed to generate logo');
     }
   },
 
   checkLogoStatus: async (taskId: string): Promise<LogoStatusResponse> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/logo/status/${taskId}`);
-      const data = await response.json();
+      const { data } = await apiClient.get(`/logo/status/${taskId}`);
       return data;
     } catch (error) {
       console.error('Status check error:', error);
@@ -34,8 +32,7 @@ export const logoService = {
 
   getLogos: async (limit: number = 10): Promise<LogosResponse> => {
     try {
-      const response = await fetch(`${API_BASE_URL}/logos?limit=${limit}`);
-      const data = await response.json();
+      const { data } = await apiClient.get(`/logos`, { params: { limit } });
       return data;
     } catch (error) {
       console.error('Fetch logos error:', error);
